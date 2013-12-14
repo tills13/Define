@@ -8,4 +8,9 @@
         <item name="android:alpha">0.95</item>
         <item name="android:windowActionBarOverlay">true</item>
     </style>
+
+    <style name="OptionsText" parent="@style/AppTheme">
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

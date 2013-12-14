@@ -65,6 +65,11 @@ public class Define extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	public void onBackPressed() {
+		finish();
+	}
+
 	public void getWordOfDay() {
 		new AsyncTask<Void, Void, Definition>() {
 			String base_url = "http://api.wordnik.com/v4/words.json/wordOfTheDay";
@@ -77,20 +82,24 @@ public class Define extends Activity {
 					JSONObject response = new JSONObject(new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine());
 					return new Definition(response.getString("word"), response.getJSONArray("definitions").getJSONObject(0).getString("partOfSpeech"), response.getJSONArray("definitions").getJSONObject(0).getString("text"));
 				} catch (IOException e) {
-
 				} catch (JSONException e) {
-
 				}
 
 				return null;
 			}
 
 			@Override
-			protected void onPostExecute(Definition result) {
+			protected void onPostExecute(final Definition result) {
 				((TextView) findViewById(R.id.word)).setText(result.word);
 				((TextView) findViewById(R.id.type)).setText(result.type);
 				((TextView) findViewById(R.id.definition)).setText(result.definition);
 				findViewById(R.id.word_of_day_container).setVisibility(View.VISIBLE);
+
+				findViewById(R.id.word_of_day_container).setOnClickListener(new View.OnClickListener() {
+					public void onClick(View view) {
+						getDefinition(result.word);
+					}
+				});
 			}
 		}.execute();
 	}

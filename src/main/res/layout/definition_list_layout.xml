@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:divider="@android:color/transparent"
             android:overScrollMode="never"
-            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbars="none"
             android:dividerHeight="10dp"/>
 
 </LinearLayout>

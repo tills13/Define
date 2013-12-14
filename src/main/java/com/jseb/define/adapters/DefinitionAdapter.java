@@ -66,12 +66,8 @@ public class DefinitionAdapter extends BaseAdapter {
 		mView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				TextView def = new TextView(mContext);
-				def.setText(getItem(i).definition);
-				def.setPadding(8, 2, 8, 2);
-				def.setTypeface(Typeface.SANS_SERIF, Typeface.ITALIC);
-				def.setTextColor(android.R.color.darker_gray);
-				def.setGravity(Gravity.CENTER);
+				View mView = LayoutInflater.from(mContext).inflate(R.layout.definition_options, null);
+				((TextView) mView.findViewById(R.id.definition)).setText(getItem(i).definition);
 
 				new AlertDialog.Builder(mContext).setNegativeButton("word", new DialogInterface.OnClickListener() {
 					@Override
@@ -85,7 +81,7 @@ public class DefinitionAdapter extends BaseAdapter {
 						((ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("definition", getItem(i).definition));
 						Toast.makeText(mContext, "copied definition to clipboard", Toast.LENGTH_LONG).show();
 					}
-				}).setMessage(getItem(i).definition).setTitle("Copy " + getItem(i).word + " to clipboard").create().show();
+				}).setView(mView).create().show();
 			}
 		});
 

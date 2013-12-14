@@ -28,7 +28,6 @@ public class DefinitionList extends Activity {
 		mListView.addFooterView(blank);
 		mListView.setAdapter(mAdapter);
 
-
 		getActionBar().setTitle(getIntent().getStringExtra("WORD"));
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getDefinition(getIntent().getStringExtra("WORD"));
