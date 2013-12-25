@@ -31,15 +31,6 @@ public class Define extends Activity {
 		Intent intent = getIntent();
 		if (intent.getAction().equals(Intent.ACTION_SEND) && intent.getType() != null) handleIntent(intent);
 
-
-		((EditText) findViewById(R.id.define_card_input)).setOnKeyListener(new View.OnKeyListener() {
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER))
-					getDefinition();
-				return true;
-			}
-		});
-
 		((TextView) findViewById(R.id.define_card_button)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
