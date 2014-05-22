@@ -6,6 +6,20 @@
               android:layout_height="match_parent">
 
     <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:padding="16dp"
+        android:text="Copy"
+        style="@style/OptionsText"/>
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/stroke_grey"/>
+
+    <TextView
         android:id="@+id/definition"
         android:padding="16dp"
         android:layout_height="fill_parent"
